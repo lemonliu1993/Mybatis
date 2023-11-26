@@ -10,5 +10,14 @@
       insert into t_user values(3,'admin','123456',23,'男','12345@qq.com')
     </insert>
 
+    <!--      void updateUser();-->
+    <update id="updateUser">
+        UPDATE t_user set username='张三' where id = 1
+    </update>
+
+    <!--     void deleteUser(); -->
+    <delete id="deleteUser">
+        DELETE from t_user where id = 2
+    </delete>
 
 </mapper>
