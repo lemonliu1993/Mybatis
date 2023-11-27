@@ -1,5 +1,9 @@
 package com.lemon.mybatis.mapper;
 
+import com.lemon.mybatis.pojo.User;
+
+import java.util.List;
+
 /**
  * Created by lemoon on 2023/11/18 11:20
  */
@@ -27,5 +31,15 @@ public interface UserMapper {
      * 删除用户信息
      */
     void deleteUser();
+
+    /**
+     * 根据id查询用户信息
+     */
+    User geUserById();
+
+    /**
+     * 查询所有的用户信息
+     */
+    List<User> getAllUser();
 
 }

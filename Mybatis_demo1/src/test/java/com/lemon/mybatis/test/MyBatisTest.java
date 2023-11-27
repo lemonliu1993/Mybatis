@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by lemoon on 2023/11/26 17:15
@@ -56,7 +57,12 @@ public class MyBatisTest {
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         //测试功能
 //        mapper.updateUser();
-        mapper.deleteUser();
+//        mapper.deleteUser();
+//        User user = mapper.geUserById();
+//        System.out.println(user);
+
+        List<User> allUser = mapper.getAllUser();
+        allUser.forEach(System.out::println);
     }
 
 
