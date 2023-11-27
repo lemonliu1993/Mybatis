@@ -3,14 +3,38 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!--设置连接数据库的环境-->
+    <!--设置连接数据库的环境
+    environments:配置多个连接数据库的环境
+    属性：
+        default: 设置默认使用的环境的id
+    -->
     <environments default="development">
+        <!-- environment: 配置某个具体的环境
+            属性：
+                id:表示连接数据库的环境的唯一标识，不能重复
+        -->
         <environment id="development">
+            <!--
+             transactionManager:设置事务管理方式
+             属性：
+             type="JDBC|MANAGED"
+             JDBC:表示当前环境中，执行SQL时，使用的时JDBC中原生的事务管理方式，事务的提交或回滚需要手动提交
+             MANAGED:被管理，例如spring
+            -->
             <transactionManager type="JDBC"/>
+            <!--
+                dataSource:配置数据源
+                属性：
+                    type:设置数据源的类型
+                    type="POOLED|UNPOOLED|JNDI"
+                    POOLED:表示使用数据库连接池缓存数据库连接
+                    UNPOOLED:表示不使用数据库连接池缓存数据库连接
+                    JNDI:表示使用上下文中的数据源
+            -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <property name="url"
-                          value="jdbc:mysql://localhost:3306/mybatis"/>
+                          value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf8"/>
                 <!--注意：如果在建sql表单的时候选了字符集（如utf8），
                 这里的value要改成：value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf8"-->
                 <property name="username" value="root"/>
