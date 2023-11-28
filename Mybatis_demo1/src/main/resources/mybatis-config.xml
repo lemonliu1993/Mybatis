@@ -4,8 +4,28 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+    <!--    MyBatis核心配置文件，标签的顺序
+         properties?,settings?,typeAliases?,typeHandlers?,
+         objectFactory?,objectWrapperFactory?,reflectorFactory?,
+         plugins?,environments?,databaseIdProvider?,mappers?-->
+
+
     <!-- 引入properties文件 -->
     <properties resource="jdbc.properties"/>
+
+    <!-- 设置类型别名-->
+    <typeAliases>
+        <!--
+            typeAlias: 设置某个类型的别名
+            属性：
+                type:设置需要设置别名的类型
+                alias:设置某个类型的别名，若不设置该属性，那么该类型拥有默认的别名，即类名且不区分大小写
+        -->
+        <!--<typeAlias type="com.lemon.mybatis.pojo.User" alias="User"></typeAlias>-->
+        <!-- 以包为单位，将包下所有的类型设置默认的类型别名，即类名且不区分大小写 -->
+        <package name="com.lemon.mybatis.pojo"/>
+    </typeAliases>
+
 
     <!--设置连接数据库的环境
     environments:配置多个连接数据库的环境
