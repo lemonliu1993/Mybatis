@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <!-- 引入properties文件 -->
+    <properties resource="jdbc.properties"/>
+
     <!--设置连接数据库的环境
     environments:配置多个连接数据库的环境
     属性：
@@ -32,13 +36,13 @@
                     JNDI:表示使用上下文中的数据源
             -->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="driver" value="${jdbc.driver}"/>
                 <property name="url"
-                          value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf8"/>
+                          value="${jdbc.url}"/>
                 <!--注意：如果在建sql表单的时候选了字符集（如utf8），
                 这里的value要改成：value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf8"-->
-                <property name="username" value="root"/>
-                <property name="password" value="123456"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
