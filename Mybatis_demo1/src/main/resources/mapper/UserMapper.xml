@@ -9,5 +9,30 @@
         insert into t_user values(null,'admin','123456',23,'男','12345@qq.com')
     </insert>
 
+    <!--void updateUser(); -->
+    <update id="updateUser">
+        update t_user set username = '张三' where id = 4;
+    </update>
+
+    <!--void deleteUser(); -->
+    <delete id="deleteUser">
+        DELETE FROM t_user where id = 5;
+    </delete>
+
+    <!--    User geUserById(); -->
+    <!--
+        查询功能的标签必须设置resultType或resultMap
+        resultType:设置默认的映射关系
+        resultMap:设置自定义的映射关系
+    -->
+    <select id="geUserById" resultType="com.lemon.mybatis.pojo.User">
+        select * from t_user where id = 3;
+    </select>
+
+
+    <!--  List<User> getAllUser(); -->
+    <select id="getAllUser" resultType="com.lemon.mybatis.pojo.User">
+        select * from t_user
+    </select>
 
 </mapper>

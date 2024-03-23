@@ -12,6 +12,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+
 /**
  * Created by lemoon on 2024/3/17 15:54
  */
@@ -39,7 +40,21 @@ public class MyBatisTest {
         int result = mapper.insertUser();
         //提交事务
         //sqlSession.commit();
-        System.out.println("result:"+result);
+        System.out.println("result:" + result);
     }
+
+
+    @Test
+    public void testCRUD() throws IOException {
+        InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+//        mapper.updateUser();
+//        mapper.deleteUser();
+//        System.out.println(mapper.geUserById());
+        System.out.println(mapper.getAllUser());
+    }
+
 
 }
